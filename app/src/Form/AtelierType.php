@@ -8,6 +8,7 @@ use App\Entity\Ressource;
 use App\Entity\Salle;
 use App\Entity\Secteur;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,9 @@ class AtelierType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('intervenant')
+            ->add('intervenant', TextareaType::class, [
+                "label" => "Intervenant",
+            ])
             ->add('date_debut')
             ->add('date_fin')
             ->add('salle', EntityType::class, [
