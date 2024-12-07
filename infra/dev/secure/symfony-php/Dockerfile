@@ -13,4 +13,4 @@ RUN rm /etc/localtime && ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 RUN install-php-extensions gd exif pdo_mysql intl zip bcmath && install-php-extensions @composer
 
-WORKDIR /var/www/app
+WORKDIR /var/www/app/app
