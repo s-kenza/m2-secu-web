@@ -19,13 +19,13 @@ class CommandType extends AbstractType
                 'label' => 'Commande',
                 'required' => true,
                 'attr' => [
-                    'class' => 'border border-gray-300 rounded p-2 w-full', // Ajout des bordures et autres styles
-                    'placeholder' => 'Entrez une commande ici...', // Texte d’indication
+                    'class' => 'border border-gray-300 rounded p-2 w-full',
+                    'placeholder' => 'Entrez une commande ici...', 
                 ],
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'inline-block bg-blue-500 hover:bg-blue-700 text-white p-2 rounded', // Style du bouton
+                    'class' => 'inline-block bg-blue-500 hover:bg-blue-700 text-white p-2 rounded',
                 ],
             ])
         ;
