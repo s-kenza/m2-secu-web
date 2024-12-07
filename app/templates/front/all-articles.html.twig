@@ -59,8 +59,8 @@
             <h1 class="text-2xl font-bold mb-4 p-6 text-center">Forum 2024 - Liste des ateliers</h1>
                 
                 <form action="{{ path('all-articles') }}" method="get">
-                    <input type="text" name="q" value="{{ query }}" placeholder="Rechercher...">
-                    <button type="submit">Rechercher</button>
+                    <input type="text" name="q" value="{{ query }}" placeholder="Rechercher..." class="w-1/2 p-2 mb-4 border rounded-md ml-4">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 rounded mr-4">Rechercher</button>
                 </form>
 
                 {% if results is defined and results|length > 0 %}
