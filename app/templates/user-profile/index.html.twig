@@ -38,6 +38,10 @@
                 </tr>
                 </tbody>
             </table>
+
+            {{ form(form) }}
+            <img src="{{ asset('uploads/images/' ~ app.user.imageFilename) }}" class="py-2">
+
         </div>
     {% else %}
         <p class="text-gray-500">Utilisateur non disponible.</p>
