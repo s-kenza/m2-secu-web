@@ -1,5 +1,7 @@
 FROM php:8.3-fpm AS build
 
+RUN mkdir -p /var/www/app/infra/volumes/dev/composer
+
 ## Installation des utilitaires
 RUN apt-get update && apt-get install -y curl vim nano git zip npm wkhtmltopdf
 RUN npm install -g yarn
@@ -12,12 +14,5 @@ RUN rm /etc/localtime && ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
 ## PHP Extensions & Composer
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 RUN install-php-extensions gd exif pdo_mysql intl zip bcmath && install-php-extensions @composer
-
-# Copy entrypoint script
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
-# Default CMD
-CMD ["sh", "/usr/local/bin/entrypoint.sh"]
 
 WORKDIR /var/www/app
