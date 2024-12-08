@@ -41,12 +41,16 @@ class AppFixtures extends Fixture
         $atelier1->setNom("Atelier 1");
         $atelier1->setSecteur($secteur1);
         $atelier1->setIntervenant('Prof 1');
+        $atelier1->setDateDebut(new \DateTime('2024-12-01 10:00:00'));
+        $atelier1->setDateFin(new \DateTime('2024-12-10 12:00:00'));
         $manager->persist($atelier1);
 
         $atelier2 = new Atelier();
         $atelier2->setNom("Atelier 2");
         $atelier2->setSecteur($secteur2);
         $atelier2->setIntervenant('Prof 1');
+        $atelier2->setDateDebut(new \DateTime('2024-12-02 14:00:00'));
+        $atelier2->setDateFin(new \DateTime('2024-12-08 16:00:00'));
         $manager->persist($atelier2);
 
         // Créer des Lycees

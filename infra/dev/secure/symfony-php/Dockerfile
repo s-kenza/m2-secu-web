@@ -1,6 +1,7 @@
 FROM php:8.3-fpm AS build
 
 RUN mkdir -p /var/www/app/infra/volumes/dev/composer
+RUN mkdir -p /var/www/app/public/uploads/images
 
 ## Installation des utilitaires
 RUN apt-get update && apt-get install -y curl vim nano git zip npm wkhtmltopdf
