@@ -107,6 +107,7 @@ npm run dev
 
 Le rapport est disponible à cette adresse : https://kenzaschuler.notion.site/Projet-S-curit-Web-1550fcd5059f80448913fef69ac839ac
 
-Ou en PDF : 
+Ou en PDF : [Kenza SCHULER - Rapport Sécurité Web.pdf](https://github.com/user-attachments/files/18051903/Kenza.SCHULER.-.Rapport.Securite.Web.pdf)
+
 
 Les consignes peuvent être téléchargées : [Projet sécurité web - Énoncé](./Projet%20sécurité%20web%20-%20Énoncé.pdf)
