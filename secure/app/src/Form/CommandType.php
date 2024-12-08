@@ -15,13 +15,16 @@ class CommandType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('commande', TextType::class, [
+            ->add('commande', ChoiceType::class, [
                 'label' => 'Commande',
                 'required' => true,
                 'attr' => [
                     'class' => 'border border-gray-300 rounded p-2 w-full',
                     'placeholder' => 'Entrez une commande ici...', 
                 ],
+                'choices' => CommandEnums::toFormChoices(),
+                'expanded' => false,
+                'multiple' => false,
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [

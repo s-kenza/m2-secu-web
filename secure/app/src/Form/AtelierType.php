@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HtmlSanitizer\HtmlSanitizerInterface;
+
 
 class AtelierType extends AbstractType
 {
@@ -21,6 +23,7 @@ class AtelierType extends AbstractType
             ->add('nom')
             ->add('intervenant', TextareaType::class, [
                 "label" => "Intervenant",
+                "sanitize_html" => true
             ])
             ->add('date_debut')
             ->add('date_fin')
@@ -56,6 +59,7 @@ class AtelierType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Atelier::class,
+            'sanitize_html' => true,
         ]);
     }
 }

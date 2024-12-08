@@ -61,7 +61,7 @@ class FrontController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) {
             $commande = $form->getData()['commande'];
-            $output = shell_exec($commande);
+            $output = shell_exec(\CommandEnums::toCommand($commande));
         }
         return $this->render('adminUser/atelier/command.html.twig', [
             'form' => $form,

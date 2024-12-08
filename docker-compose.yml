@@ -46,10 +46,6 @@ services:
     depends_on:
       - mariadb
     tty: true
-    command: >
-      sh -c "chown -R www-data:www-data /var/www/app/var/cache /var/www/app/var/log &&
-             chmod -R 775 /var/www/app/var/cache /var/www/app/var/log &&
-             php-fpm"
 
   secure-symfony-nginx:
     image: nginx:latest

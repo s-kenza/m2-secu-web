@@ -21,27 +21,15 @@ class LoginController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
+
+        sleep(2);
+
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
-        $errorMessage = '';
-
-        // Vérifier si l'email existe dans la base de données
-        $user = $this->userRepository->findOneBy(['email' => $lastUsername]);
-
-        if ($error) {
-            // Si un utilisateur avec cet email existe, on vérifie le mot de passe
-            if ($user) {
-                // Si le mot de passe est incorrect
-                $errorMessage = 'Mot de passe incorrect';
-            } else {
-                // Si l'email n'existe pas dans la base de données
-                $errorMessage = 'Email incorrect';
-            }
-        }
 
         return $this->render('login/index.html.twig', [
             'last_username' => $lastUsername,
-            'error' => $errorMessage,
+            'error' => $error,
         ]);
     }
 }

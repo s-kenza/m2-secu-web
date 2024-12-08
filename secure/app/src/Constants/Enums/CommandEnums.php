@@ -2,19 +2,20 @@
 
 enum CommandEnums: string
 {
-    case ARTICLE_TOTAL = 'Total des ateliers';
+    case ATELIER_TOTAL = 'Total des ateliers';
 
     public static function toFormChoices(): array
     {
         return [
-            self::ARTICLE_TOTAL->value => self::ARTICLE_TOTAL,
+            self::ATELIER_TOTAL->value => self::ATELIER_TOTAL,
         ];
     }
 
-    public function getShellCommand(): string
+    public static function toCommand(CommandEnums $commandEnums): string
     {
-        return match($this) {
-            self::ARTICLE_TOTAL => 'php bin/console app:total',
+        return match($commandEnums) {
+            self::ATELIER_TOTAL => 'php bin/console app:total',
+            default => throw new Exception("Unknown command enum '{$commandEnums}'"),
         };
     }
 }
